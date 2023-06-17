@@ -1,8 +1,8 @@
 import { ContactsForm } from './ContactForm/ContactsForm';
 import { ContactsList } from './ContactList/ContactsList';
-import { Filter } from './Filter/Filter';
+// import { Filter } from './Filter/Filter';
 import css from './Styles/Styles.module.css';
-import Loader from './Loader/Loader';
+// import Loader from './Loader/Loader';
 
 export const App = () => {
   

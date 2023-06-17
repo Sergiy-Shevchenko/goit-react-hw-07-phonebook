@@ -1,12 +1,12 @@
 
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect, useState } from 'react';
-import { Notify } from 'notiflix';
+import React, { useState } from 'react';
+// import { Notify } from 'notiflix';
 // import { addContact } from 'redux/action';
 import css from './ContactForm.module.css';
-import { contactsSelector } from 'redux/selector';
-import Loader from 'components/Loader/Loader';
-import { getContactsThunk } from 'redux/contactsReduser';
+// import { contactsSelector } from 'redux/selector';
+// import Loader from 'components/Loader/Loader';
+// import { getContactsThunk } from 'redux/contactsReduser';
 import { addContact } from 'redux/operation';
 import { getContacts } from 'redux/selector';
 
@@ -19,7 +19,7 @@ export const ContactsForm = () => {
   
 
 const dispatch = useDispatch()
-const items = useSelector(getContacts)
+// const items = useSelector(getContacts)
 
 
   const hendleChangetNane = ({ target: { value } }) => {
