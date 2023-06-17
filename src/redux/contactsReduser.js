@@ -1,10 +1,10 @@
-import { createReducer} from '@reduxjs/toolkit';
+// import { createReducer} from '@reduxjs/toolkit';
 // import { createSlice } from '@reduxjs/toolkit';
-import { CONTACT_ADD} from './types';
+// import { CONTACT_ADD} from './types';
 // import { addContact} from './action';
-import { deleteContact } from './action';
+// import { deleteContact } from './action';
 
-const initialState = [];
+// const initialState = [];
 
 
 //---------------before-----------------
@@ -32,14 +32,14 @@ const initialState = [];
 // })
 
 //---------------after-step-2-----------------
-export const contactsReducer = createReducer(initialState, {
-  [CONTACT_ADD]: (state, {payload}) => {
-    return [...state, payload]
-  },
-[deleteContact]: (state, {payload}) => {
-  return state.filter(({ id }) => id !== payload);
-}
-})
+// export const contactsReducer = createReducer(initialState, {
+//   [CONTACT_ADD]: (state, {payload}) => {
+//     return [...state, payload]
+//   },
+// [deleteContact]: (state, {payload}) => {
+//   return state.filter(({ id }) => id !== payload);
+// }
+// })
 
 //---------------slice------------------------
 

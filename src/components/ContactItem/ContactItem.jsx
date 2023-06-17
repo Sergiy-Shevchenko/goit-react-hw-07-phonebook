@@ -4,7 +4,7 @@ import css from './ContactItem.module.css';
 
 import { ReactComponent as AddIcon } from '../Icons/phone.svg';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/action';
+import { deleteContact } from 'redux/operation';
 
 export const ContactsItem = ({ contact: { id, name, number } }) => {
   const dispatch = useDispatch();

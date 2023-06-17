@@ -7,7 +7,7 @@ import { filterSelector } from 'redux/selector';
 import { filterContacts } from 'redux/filterReduser';
 
 export const Filter = () => {
-  const filter = useSelector(filterSelector);
+  // const filter = useSelector(filterSelector);
   const dispatch = useDispatch();
 
   const handleFilterChange = ({target: {value}}) =>
@@ -17,7 +17,7 @@ export const Filter = () => {
     <input
       className={css.input}
       type="text"
-      value={filter}
+      // value={filter}
       onChange={handleFilterChange}
       name="filter"
       pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"

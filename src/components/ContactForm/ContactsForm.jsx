@@ -1,17 +1,26 @@
+
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Notify } from 'notiflix';
-import { addContact } from 'redux/action';
+// import { addContact } from 'redux/action';
 import css from './ContactForm.module.css';
 import { contactsSelector } from 'redux/selector';
+import Loader from 'components/Loader/Loader';
+import { getContactsThunk } from 'redux/contactsReduser';
+import { addContact } from 'redux/operation';
+import { getContacts } from 'redux/selector';
+
 
 export const ContactsForm = () => {
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(contactsSelector);
+  
 
-  const dispatch = useDispatch();
+const dispatch = useDispatch()
+const items = useSelector(getContacts)
+
 
   const hendleChangetNane = ({ target: { value } }) => {
     setName(value);
@@ -23,20 +32,23 @@ export const ContactsForm = () => {
   const hendleSubmit = event => {
     event.preventDefault();
 
-    const notmalizeNewContact = name.toLowerCase();
-    if (name === '') {
-      return Notify.warning(`Please enter your name`);
-    }
-    if (number === '') {
-      return Notify.warning(`${name} please enter your number`);
-    }
-    if (
-      contacts.find(
-        contact => contact.name.toLocaleLowerCase() === notmalizeNewContact
-      )
-    ) {
-      return Notify.failure(`${name} is alredy in contacts`);
-    }
+    // const notmalizeNewContact = name.toLowerCase();
+    // if (name === '') {
+    //   return Notify.warning(`Please enter your name`);
+    // }
+    // if (number === '') {
+    //   return Notify.warning(`${name} please enter your number`);
+    // }
+    // if (
+    //   items.find(
+    //     item => item.name.toLocaleLowerCase() === notmalizeNewContact
+    //   )
+    // ) {
+    //   return Notify.failure(`${name} is alredy in contacts`);
+    // }
+// console.log(name);
+//   console.log(number);
+// console.log(items)
 
     dispatch(addContact(name, number));
     resetForm();
@@ -48,7 +60,10 @@ export const ContactsForm = () => {
 
   return (
     <div className={css.section}>
-      <form className={css.form} onSubmit={hendleSubmit}>
+
+      <form className={css.form} 
+      onSubmit={hendleSubmit}
+      >
         <label className={css.inputName}>
           Name
           <input
