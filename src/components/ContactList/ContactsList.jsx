@@ -8,12 +8,12 @@ import { getContacts } from 'redux/selector';
 
 
 
-const filterContacts = (contacts, filter) => {
-  const nopmalizedFilter = filter.toLowerCase();
-  return contacts.filter(contact =>
-    contact.name.toLowerCase().includes(nopmalizedFilter)
-  );
-};
+// const filterContacts = (contacts, filter) => {
+//   const nopmalizedFilter = filter.toLowerCase();
+//   return contacts.filter(contact =>
+//     contact.name.toLowerCase().includes(nopmalizedFilter)
+//   );
+// };
 
 export const ContactsList = () => {
   // const contacts = useSelector(contactsSelector);

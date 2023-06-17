@@ -1,5 +1,5 @@
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import React, { useState } from 'react';
 // import { Notify } from 'notiflix';
 // import { addContact } from 'redux/action';
@@ -8,7 +8,7 @@ import css from './ContactForm.module.css';
 // import Loader from 'components/Loader/Loader';
 // import { getContactsThunk } from 'redux/contactsReduser';
 import { addContact } from 'redux/operation';
-import { getContacts } from 'redux/selector';
+// import { getContacts } from 'redux/selector';
 
 
 export const ContactsForm = () => {
