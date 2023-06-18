@@ -1,23 +1,23 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import css from './Filter.module.css';
-import { useDispatch } from 'react-redux';
-// import { filterContacts } from 'redux/action';
-// import { filterSelector } from 'redux/selector';
-import { filterContacts } from 'redux/filterReduser';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFilter } from 'redux/selector';
+import { filterContacts } from 'redux/filterSlice';
 
 export const Filter = () => {
-  // const filter = useSelector(filterSelector);
+  const filter = useSelector(selectFilter);
+  console.log(filter);
   const dispatch = useDispatch();
 
-  const handleFilterChange = ({target: {value}}) =>
+  const handleFilterChange = ({ target: { value } }) => {
     dispatch(filterContacts(value));
+  };
 
   return (
     <input
       className={css.input}
       type="text"
-      // value={filter}
+      value={filter}
       onChange={handleFilterChange}
       name="filter"
       pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"

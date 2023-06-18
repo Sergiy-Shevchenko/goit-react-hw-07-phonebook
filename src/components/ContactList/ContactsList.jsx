@@ -2,46 +2,29 @@ import React, { useEffect } from 'react';
 import css from './ContactList.module.css';
 import ContactsItem from 'components/ContactItem/ContactItem';
 import { useDispatch, useSelector } from 'react-redux';
-// import { filterSelector } from 'redux/selector';
 import { fethcContacts } from 'redux/operation';
-import { getContacts } from 'redux/selector';
-
-
-
-// const filterContacts = (contacts, filter) => {
-//   const nopmalizedFilter = filter.toLowerCase();
-//   return contacts.filter(contact =>
-//     contact.name.toLowerCase().includes(nopmalizedFilter)
-//   );
-// };
+import { selectIsLoading, selectError, visibleContacts } from 'redux/selector';
 
 export const ContactsList = () => {
-  // const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
+  const filterContacts = useSelector(visibleContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
-  // const filter = useSelector(filterSelector);
-  // const visibleContacts = filterContacts(contacts, filter);
-  const dispatch = useDispatch()
-  const {items, error, isLoading} = useSelector(getContacts);
-  // const {contacts: {items, error, isLoading}} = useSelector(getContacts);
-  // console.log(items)
-  
-  useEffect(()=>{
-    dispatch(fethcContacts())
-  },[dispatch])
+  useEffect(() => {
+    dispatch(fethcContacts());
+  }, [dispatch]);
 
-
+  if (filterContacts.length === 0) return null;
 
   return (
     <div className={css.section}>
       <ul className={css.contacList}>
-      {isLoading && <p>Loading tasks...</p>}
-      {error && <p>{error}</p>}
-           {items.map(item => ( 
-          // <li className={css.contactItem} key={item.id}>
-          <ContactsItem contact={item} /> 
-            // </li>
-         ))} 
-       
+        {isLoading && <p>Loading tasks...</p>}
+        {error && <p>{error}</p>}
+        {filterContacts.map(item => (
+          <ContactsItem contact={item} />
+        ))}
       </ul>
     </div>
   );

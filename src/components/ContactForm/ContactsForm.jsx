@@ -1,24 +1,16 @@
-
-import { useDispatch, useSelector} from 'react-redux';
-import React, { useState} from 'react';
-// import { Notify } from 'notiflix';
-import css from './ContactForm.module.css';
-// import { contactsSelector } from 'redux/selector';
-// import Loader from 'components/Loader/Loader';
-// import { getContactsThunk } from 'redux/contactsReduser';
+import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { Notify } from 'notiflix';
 import { addContact } from 'redux/operation';
-import { getContacts } from 'redux/selector';
-
+import { selectContacts } from 'redux/selector';
+import css from './ContactForm.module.css';
 
 export const ContactsForm = () => {
-
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  
-
-const dispatch = useDispatch()
-const {items} = useSelector(getContacts)
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   const hendleChangetNane = ({ target: { value } }) => {
     setName(value);
@@ -30,25 +22,22 @@ const {items} = useSelector(getContacts)
   const hendleSubmit = event => {
     event.preventDefault();
 
-    // const notmalizeNewContact = name.toLowerCase();
-    // if (name === '') {
-    //  return Notify.warning(`Please enter your name`);
-    // }
-    //  if (number === '') {
-    //  return Notify.warning(`${name} please enter your number`);
-    // }
-    // if (
-    // items.find(
-    //   item => item.name.toLocaleLowerCase() === notmalizeNewContact
-    //  )
-    //  ) {
-    //   return Notify.failure(`${name} is alredy in contacts`);
-    // }
-console.log(name);
-  console.log(number);
-console.log(items)
+    const notmalizeNewContact = name.toLowerCase();
+    if (name === '') {
+      return Notify.warning(`Please enter your name`);
+    }
+    if (number === '') {
+      return Notify.warning(`${name} please enter your number`);
+    }
+    if (
+      contacts.find(
+        contact => contact.name.toLocaleLowerCase() === notmalizeNewContact
+      )
+    ) {
+      return Notify.failure(`${name} is alredy in contacts`);
+    }
 
-    dispatch(addContact(name, number));
+    dispatch(addContact({ name, number }));
     resetForm();
   };
   const resetForm = () => {
@@ -58,10 +47,7 @@ console.log(items)
 
   return (
     <div className={css.section}>
-
-      <form className={css.form} 
-      onSubmit={hendleSubmit}
-      >
+      <form className={css.form} onSubmit={hendleSubmit}>
         <label className={css.inputName}>
           Name
           <input

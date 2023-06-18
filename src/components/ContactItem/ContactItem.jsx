@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import css from './ContactItem.module.css';
-
 import { ReactComponent as AddIcon } from '../Icons/phone.svg';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operation';
+import css from './ContactItem.module.css';
 
-export const ContactsItem = ({contact:{id, name, number}}) => {
+export const ContactsItem = ({ contact: { id, name, number } }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => dispatch(deleteContact(id));
