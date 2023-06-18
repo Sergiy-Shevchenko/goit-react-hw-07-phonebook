@@ -1,14 +1,13 @@
 
-import { useDispatch} from 'react-redux';
-import React, { useState } from 'react';
+import { useDispatch, useSelector} from 'react-redux';
+import React, { useState} from 'react';
 // import { Notify } from 'notiflix';
-// import { addContact } from 'redux/action';
 import css from './ContactForm.module.css';
 // import { contactsSelector } from 'redux/selector';
 // import Loader from 'components/Loader/Loader';
 // import { getContactsThunk } from 'redux/contactsReduser';
 import { addContact } from 'redux/operation';
-// import { getContacts } from 'redux/selector';
+import { getContacts } from 'redux/selector';
 
 
 export const ContactsForm = () => {
@@ -19,8 +18,7 @@ export const ContactsForm = () => {
   
 
 const dispatch = useDispatch()
-// const items = useSelector(getContacts)
-
+const {items} = useSelector(getContacts)
 
   const hendleChangetNane = ({ target: { value } }) => {
     setName(value);
@@ -34,21 +32,21 @@ const dispatch = useDispatch()
 
     // const notmalizeNewContact = name.toLowerCase();
     // if (name === '') {
-    //   return Notify.warning(`Please enter your name`);
+    //  return Notify.warning(`Please enter your name`);
     // }
-    // if (number === '') {
-    //   return Notify.warning(`${name} please enter your number`);
+    //  if (number === '') {
+    //  return Notify.warning(`${name} please enter your number`);
     // }
     // if (
-    //   items.find(
-    //     item => item.name.toLocaleLowerCase() === notmalizeNewContact
-    //   )
-    // ) {
+    // items.find(
+    //   item => item.name.toLocaleLowerCase() === notmalizeNewContact
+    //  )
+    //  ) {
     //   return Notify.failure(`${name} is alredy in contacts`);
     // }
-// console.log(name);
-//   console.log(number);
-// console.log(items)
+console.log(name);
+  console.log(number);
+console.log(items)
 
     dispatch(addContact(name, number));
     resetForm();
@@ -82,7 +80,7 @@ const dispatch = useDispatch()
           Number
           <input
             className={css.input}
-            type="tel"
+            type="text"
             value={number}
             onChange={hendleChangeNumber}
             name="number"

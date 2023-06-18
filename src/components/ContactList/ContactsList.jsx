@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import css from './ContactList.module.css';
 import ContactsItem from 'components/ContactItem/ContactItem';
 import { useDispatch, useSelector } from 'react-redux';
-// import { contactsSelector, filterSelector } from 'redux/selector';
+// import { filterSelector } from 'redux/selector';
 import { fethcContacts } from 'redux/operation';
 import { getContacts } from 'redux/selector';
 
@@ -16,12 +16,14 @@ import { getContacts } from 'redux/selector';
 // };
 
 export const ContactsList = () => {
-  // const contacts = useSelector(contactsSelector);
+  // const contacts = useSelector(getContacts);
+
   // const filter = useSelector(filterSelector);
   // const visibleContacts = filterContacts(contacts, filter);
   const dispatch = useDispatch()
-  const {items, isLoading, error} = useSelector(getContacts);
-  console.log(items)
+  const {items, error, isLoading} = useSelector(getContacts);
+  // const {contacts: {items, error, isLoading}} = useSelector(getContacts);
+  // console.log(items)
   
   useEffect(()=>{
     dispatch(fethcContacts())
@@ -34,8 +36,7 @@ export const ContactsList = () => {
       <ul className={css.contacList}>
       {isLoading && <p>Loading tasks...</p>}
       {error && <p>{error}</p>}
-        {/* <p>{items.length > 0 && JSON.stringify(items, null, 2)}</p> */}
-        {items.map(item => ( 
+           {items.map(item => ( 
           // <li className={css.contactItem} key={item.id}>
           <ContactsItem contact={item} /> 
             // </li>
