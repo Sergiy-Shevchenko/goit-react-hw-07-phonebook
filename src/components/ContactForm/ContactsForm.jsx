@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from 'react';
 import { Notify } from 'notiflix';
-import { addContact } from 'redux/operation';
+import { addContact } from 'redux/operations';
 import { selectContacts } from 'redux/selector';
 import css from './ContactForm.module.css';
 

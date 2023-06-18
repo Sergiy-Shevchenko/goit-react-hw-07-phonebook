@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ReactComponent as AddIcon } from '../Icons/phone.svg';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/operation';
+import { deleteContact } from 'redux/operations';
 import css from './ContactItem.module.css';
 
 export const ContactsItem = ({ contact: { id, name, number } }) => {
