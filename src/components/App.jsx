@@ -2,7 +2,7 @@ import { ContactsForm } from './ContactForm/ContactsForm';
 import { ContactsList } from './ContactList/ContactsList';
 import { Filter } from './Filter/Filter';
 import css from './Styles/Styles.module.css';
-// import Loader from './Loader/Loader';
+
 
 export const App = () => {
   
@@ -13,7 +13,6 @@ export const App = () => {
       <h2 className={css.title}>Contacts</h2>
       <h3 className={css.inputName}>Find contacts by name</h3>
       <Filter />
-      {/* <Loader/> */}
       <ContactsList />
     </div>
   );
