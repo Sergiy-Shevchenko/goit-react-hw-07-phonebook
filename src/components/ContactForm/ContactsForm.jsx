@@ -10,7 +10,7 @@ export const ContactsForm = () => {
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
+  const items = useSelector(selectContacts);
 
   const hendleChangetNane = ({ target: { value } }) => {
     setName(value);
@@ -30,7 +30,7 @@ export const ContactsForm = () => {
       return Notify.warning(`${name} please enter your number`);
     }
     if (
-      contacts.find(
+      items.find(
         contact => contact.name.toLocaleLowerCase() === notmalizeNewContact
       )
     ) {

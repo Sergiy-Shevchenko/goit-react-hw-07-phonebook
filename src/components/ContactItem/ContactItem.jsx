@@ -5,14 +5,14 @@ import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
 import css from './ContactItem.module.css';
 
-export const ContactsItem = ({ contact: { id, name, number } }) => {
+export const ContactsItem = ({ id, name, number }, key) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => dispatch(deleteContact(id));
 
   return (
     <>
-      <li className={css.contactItem} key={id}>
+      <li className={css.contactItem} key={key}>
         <p className={css.contacName}>
           <AddIcon />
           {name}: {number}
